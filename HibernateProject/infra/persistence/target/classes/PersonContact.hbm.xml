@@ -1,0 +1,22 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+      "-//Hibernate/Hibernate Mapping DTD//EN"
+      "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+      
+<hibernate-mapping>
+	<class name="com.mycompany.app.PersonContact" table="personcontact">
+	<meta attribute = "class-description">
+         This class contains the person contact detail. 
+      </meta>
+      
+      <id name = "personContactId" type = "int" column = "person_contact_id">
+         <generator class="increment"/>
+      </id>
+      
+      <property name="personId" column="person_id" type="int" />
+      <property name="personContactType" column="person_contact_type" type="string" />
+      <property name="personContactValue" column="person_contact_value" type="string" />
+	</class>
+</hibernate-mapping>
+
+
