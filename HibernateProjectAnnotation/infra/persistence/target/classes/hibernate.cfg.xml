@@ -1,0 +1,19 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC  
+          "-//Hibernate/Hibernate Configuration DTD 3.0//EN"  
+          "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd"> 
+          
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+		<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/dbusers</property>
+		<property name="hibernate.connection.username">postgres</property>
+		<property name="hibernate.connection.password">root1234</property>
+
+		<mapping class="com.mycompany.app.Person"/>
+		<mapping class="com.mycompany.app.Role"/>
+		<mapping class="com.mycompany.app.PersonRole"/>
+		<mapping class="com.mycompany.app.PersonContact"/>
+	</session-factory>
+</hibernate-configuration>
