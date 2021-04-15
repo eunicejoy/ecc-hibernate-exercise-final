@@ -318,6 +318,51 @@ public class PersonService{
 	    }
     }
 
+    public static void listPersonBy(String column, String sort){
+    	if(personDao.listPersonBy(column, sort).isEmpty()){
+	    	System.out.println("");
+	    	System.out.println("No records found.");
+	    } else{
+	    	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    	System.out.println("");
+
+    		System.out.println("------------------Persons-----------------");
+    	for(Person person:personDao.listPersonBy(column, sort)){
+    		System.out.println("ID: " + person.getPersonId());
+    		System.out.println("First Name: " + person.getFirstName());
+    		System.out.println("Last Name: " + person.getLastName());
+    		System.out.println("Middle Name: " + person.getMiddleName());
+    		System.out.println("Suffix: " + person.getSuffix());
+    		System.out.println("Title: " + person.getTitle());
+    		System.out.println("Street Number: " + person.getStreetNumber());
+    		System.out.println("Barangay: " + person.getBarangay());
+    		System.out.println("Municipality or City: " + person.getMunicipalityOrCity());
+    		System.out.println("Zipcode: " + person.getZipcode());
+    		String birthday = dateFormat.format(person.getBirthday());
+    		System.out.println("Birthday: " + birthday);
+    		System.out.println("General Weighted Average: " + person.getGeneralWeightedAverage());	
+			String dateHired = dateFormat.format(person.getDateHired());
+    		System.out.println("Date Hired: " + dateHired);
+    		System.out.println("Currently Employed: " + person.getCurrentlyEmployed());
+    		
+    		List<PersonContact> personContacts = personDao.personContacts(person.getPersonId());
+	        System.out.println("Contacts:");
+	        for(PersonContact pc:personContacts){
+	        	System.out.println(pc.getPersonContactType() + ": " + pc.getPersonContactValue());
+	        }
+
+    		List<String> result = personDao.personRoles(person.getPersonId());
+            System.out.println("Roles: ");
+	            for(String roleName:result){
+	            	System.out.println(roleName);
+	            }
+
+
+    		System.out.println("------------------------------------------");
+            }
+	    }
+    }
+
     public static void addPersonRole(){
     	if(personDao.listPerson().isEmpty()){
     		System.out.println("");

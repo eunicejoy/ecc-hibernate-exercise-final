@@ -7,7 +7,7 @@ import org.hibernate.Query;
 
 public class PersonDao
 {
-	public static Session session = Utilities.getSessionFactory().openSession();
+    public static Session session = Utilities.getSessionFactory().openSession();
 
     public void addPerson(Person person) {
         session.beginTransaction();
@@ -16,12 +16,16 @@ public class PersonDao
     }
 
     public List<Person> listPerson(){
-    	return session.createQuery("FROM Person").list();
+        return session.createQuery("FROM Person").list();
+    }
+
+    public List<Person> listPersonBy(String column, String sort){
+        return session.createQuery("FROM Person ORDER BY " +column+ " "+sort).list();
     }
 
     public void updatePerson(Person person){
-    	session.beginTransaction();
-    	session.update(person);
+        session.beginTransaction();
+        session.update(person);
         session.getTransaction().commit();
     }
 

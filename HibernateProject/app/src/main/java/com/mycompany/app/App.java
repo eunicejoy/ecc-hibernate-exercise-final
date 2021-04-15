@@ -70,7 +70,7 @@ public class App
               PersonService.updatePerson();
               break;
             case 4:
-              PersonService.listPerson();
+              listPerson();
               break;
             case 5:
               PersonService.addPersonRole();
@@ -88,6 +88,51 @@ public class App
       }
     }
 
+    public static void listPerson(){
+      while(userChoice != 0){
+
+          System.out.println("");
+          System.out.println("------List Person------");
+          System.out.println("[1] List person by GWA [Ascending]");
+          System.out.println("[2] List person by GWA [Descending]");
+          System.out.println("[3] List person by Date hired [Ascending]");
+          System.out.println("[4] List person by Date hired [Descending]");
+          System.out.println("[5] List person by Last name [Ascending]");
+          System.out.println("[6] List person by Last name [Descending]");
+          System.out.println("[7] Back to Person");
+          System.out.println("[0] Exit");
+
+          Scanner scanInput = new Scanner(System.in);
+          userChoice = scanInput.nextInt();
+
+          switch(userChoice){
+            case 1:
+              PersonService.listPersonBy("general_weighted_average","ASC");
+              break;
+            case 2:
+              PersonService.listPersonBy("general_weighted_average","DESC");
+              break;
+            case 3:
+              PersonService.listPersonBy("date_hired","ASC");
+              break;
+            case 4:
+              PersonService.listPersonBy("date_hired","DESC");
+              break;
+            case 5:
+              PersonService.listPersonBy("last_name","ASC");
+              break;
+            case 6:
+              PersonService.listPersonBy("last_name","DESC");
+              break;
+            case 7:
+              person();
+            case 0:
+              break;
+            default:
+              System.out.println("Invalid input.");
+          }
+      }
+    }
     public static void contact(){
       while(userChoice != 0){
 
