@@ -19,6 +19,10 @@ public class PersonDao
     	return session.createQuery("FROM Person").list();
     }
 
+    public List<Person> listPersonBy(String column, String sort){
+        return session.createQuery("FROM Person ORDER BY " +column+ " "+sort).list();
+    }
+
     public void updatePerson(Person person){
     	session.beginTransaction();
     	session.update(person);
